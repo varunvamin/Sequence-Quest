@@ -277,27 +277,24 @@ char keypad_get_key()
 {
     for(int r=0; r<4; r++)
     {
-        // 1. Reset all rows LOW (open circuit)
-        for(int i=0; i<4; i++)
-            cyhal_gpio_write(row_pins[i], 0);
-
-        // 2. Set current row HIGH (drive/strobe the row)
+        // 1. Set current row HIGH (drive/strobe the row)
         cyhal_gpio_write(row_pins[r], 1); 
 
         cyhal_system_delay_ms(2); 
 
         for(int c=0; c<4; c++)
         {
-            // 3. Check for HIGH (1). 
+            // 2. Check for HIGH (1) on column 
             if(cyhal_gpio_read(col_pins[c]) == 1)
             {
-                // Reset row pins before returning to stop the strobe
-                for(int i=0; i<4; i++)
-                    cyhal_gpio_write(row_pins[i], 0); 
-
+                // Reset row pin before returning to stop the strobe
+                cyhal_gpio_write(row_pins[r], 0); 
                 return keymap[r][c];
             }
         }
+        
+        // 3. Reset current row LOW before moving to the next row
+        cyhal_gpio_write(row_pins[r], 0);
     }
     return 0;
 }
