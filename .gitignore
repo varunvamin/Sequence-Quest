@@ -1,0 +1,28 @@
+# ModusToolbox / Cypress PSoC Creator generated files
+build/
+bsps/
+libs/
+mtb_shared/
+.mtb
+
+# PSoC Creator specifics
+*.cydsn/codegentemp/
+*.cydsn/CortexM0/
+*.cydsn/CortexM4/
+*.cydsn/Export/
+*.cydsn/Debug/
+*.cydsn/Release/
+*.cyprj.*
+*.svd
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+
+# Compiled objects
+*.o
+*.elf
+*.hex
+*.bin
+*.map
