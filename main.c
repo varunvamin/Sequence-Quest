@@ -57,7 +57,10 @@ void uart_print(const char *str)
     }
 }
 
-// Custom function to print an integer to UART
+/**
+ * @brief Custom function to print an integer to UART.
+ * @param val The integer value to print.
+ */
 void uart_print_int(int val) 
 {
     // Safety buffer
