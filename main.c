@@ -44,7 +44,10 @@ int current_mode = 0; // 0: Menu, 1: Sequence Quest, 2: Hex-to-BCD
 
 /* ----------- UART Helper Functions ----------- */
 
-// Prints a null-terminated string to UART
+/**
+ * @brief Prints a null-terminated string to UART.
+ * @param str The string to print.
+ */
 void uart_print(const char *str)
 {
     size_t len = strlen(str);
